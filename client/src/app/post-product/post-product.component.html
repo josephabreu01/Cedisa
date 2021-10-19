@@ -1,0 +1,44 @@
+<section id="postestudio">
+  <div class="container p-5">
+    <h4 class="display-4">Publicar un estudio</h4>
+
+    <app-message></app-message>
+    <div *ngIf="!categorias" class="m-auto">
+      <h1 class="text-center display-3 mt-5">
+        <i class="spinner-grow" role="status"></i>
+      </h1>
+    </div>
+    <div *ngIf="categorias" class=" ">
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label class="form-control-label">Titulo</label>
+            <input type="text" name="title" class="form-control" [(ngModel)]="estudio.titulo">
+          </div>
+          <div class="form-group">
+            <label class="form-control-label">Precio</label>
+            <input type="number" name="price" class="form-control" [(ngModel)]="estudio.precio">
+          </div>
+          <div class="form-group">
+            <label>Categoria</label>
+            <ng-select name="categoryId" [(ngModel)]="estudio.categoriaId">
+              <ng-option *ngFor="let category of categorias" [value]="category._id">{{category.nombre}}</ng-option>
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label>Descripcion</label>
+            <textarea class="form-control" name="description" rows="5" [(ngModel)]="estudio.descripcion"></textarea>
+          </div>
+          <!-- <div class="form-group">
+              <label>Upload Image</label>
+              <input type="file" class="form-control-file" accept="image/*" name="file" (change)="fileChange($event)">
+            </div> -->
+          <button type="button" class="btn btn-outline-success" style="width: 200px;" (click)="post()"
+            [disabled]="btnDisabled">Publicar</button>
+          <button type="button" class="btn btn-outline-primary" style="width: 200px;float: right;"
+            (click)="misEstudios()" [disabled]="btnDisabled">Ves mis estudios</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

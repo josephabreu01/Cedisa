@@ -1,0 +1,111 @@
+<section id="estudio" class=" text-dark" style="background-color: #e3f2fd;">
+    <div class="container-fluid p-2">
+        <!-- <app-message></app-message>
+        <p  class="shadow-sm " *ngIf="estudio ? estudio.notes : false">
+            <ngb-alert [dismissible]="true" [type]="'danger'">
+                <strong>NOTA</strong> {{estudio.notes}}
+            </ngb-alert>
+        </p>
+        <ngb-toast *ngIf="showToast" [autohide]="false" header="Notification header">
+           estudio seleccionado {{estudio.product_name}}
+          </ngb-toast>
+        <div *ngIf="!estudios" class="m-auto">
+            <h1 class="text-center display-3 mt-5">
+                <i class="spinner-grow"></i>
+            </h1>
+        </div> -->
+
+        <div *ngIf="estudios" class="container-fluid">
+            <div class="row">
+
+                <div class="row col-lg-12">
+
+
+
+                    <h4 class="display-4 col-lg-4"> <strong>Estudios</strong></h4>
+                    <button class="btn shadow col-lg-2 row p-2" style="background-color: white;  margin-right: 10px;"
+                        (click)="cancelarCita()"> Cancelar a Cita
+                        <i class="bi bi-trash"></i>
+                    </button>
+                    <h4 class="display-4 col-lg-4"> <strong>Paciente</strong></h4>
+                </div>
+
+
+                <div class="col-lg-6 rounded-3 row" style="height:fit-content;margin-top: 25px;">
+                    <!-- <div class="">
+                        <div class="card-body">
+                            <h5 class="card-title">Doctor</h5>
+                            <br>
+                            <br>
+                        </div>
+                    </div> -->
+                    
+                    <table class="table table-borderless shadow rounded-3 " style=" background-color: white;">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <h4>Estudio</h4>
+                                </th>
+                                <th>
+                                    <h4 style="text-align: center;"> Precio Privado</h4>
+                                </th>
+
+
+                            </tr>
+                        </thead>
+                        <div class="form-group p-2">
+                            <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="filterTerm">
+                          </div>
+                        <tbody *ngFor="let estudio of estudios | filter:filterTerm">
+                            <td>{{estudio.nombre}}</td>
+                            <td style="text-align: center;">{{estudio.precio | currency}}</td>
+                            <button class="btn btn-outline-danger rounded-3 " (click)="borrarEstudio(estudio,estudios)">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </tbody>
+                        <tfoot>
+
+                        </tfoot>
+                    </table>
+
+                </div>
+
+                <div class="col-lg-6 shadow rounded-3 "
+                    style="height:fit-content;margin-top: 25px; margin-left: 20px; background-color: white;">
+
+                    <!-- <h4>Precio ARS </h4>
+                    
+                            <div class="d-flex bd-highlight mb-" *ngFor="let ars of ars">
+                                <div class="p-2 bd-highlight">{{ ars.seguro }}</div>
+                                <div class="ms-auto p-2 bd-highlight">{{ars.precio_seguro | currency}}</div>
+                              </div> -->
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <h4>Ars</h4>
+                                </th>
+                                <th>
+                                    <h4>Precio</h4>
+                                </th>
+                            </tr>
+                        </thead>
+                        <Tbody>
+
+                            <td></td>
+                            <td></td>
+                            <br>
+                        </Tbody>
+                    </table>
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</section>

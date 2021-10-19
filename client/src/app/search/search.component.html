@@ -1,0 +1,40 @@
+<section id="search" class=" text-dark" style="background-color: #e3f2fd;">
+  <div class="p-5">
+    <app-message></app-message>
+    <div class="lead">
+      <h4 *ngIf="existe" class="display-4">
+        <strong>Resultado de la busqueda </strong>
+      </h4>
+      <h4 *ngIf="!existe" class="display-4 text-center">
+        <strong>Este estudio no de encunetra en nuestros registros actualmente </strong>
+      </h4>
+    </div>
+    <div class="row">
+      <div *ngIf="!contenido" class="m-auto">
+        <h1 class="text-center display-3 mt-5">
+          <i class="spinner-grow"></i>
+        </h1>
+      </div>
+      <div *ngFor="let estudio of contenido " class="col-md-3 mb-5">
+        <br>
+        <div class="shadow scale rounded-3" style="height: 250px; width: auto;background-color: white;"
+          routerLink="/estudio/{{ estudio.product_id }}">
+          <div class=" text-center " style="padding: 10px;">
+
+            <!-- <img src="{{ estudio.image }}" alt="estudio" class="card-img-top"> -->
+            <div>
+              <h5 class="card-title fs-4" style="white-space: normal; margin-top: 15%;">{{ estudio.product_name }}</h5>
+
+              <p class="card-text"> Categoria: {{estudio.name}}</p>
+              <p class="card-text">Precio: {{estudio.price1 | currency}}</p>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- <ngb-pagination [collectionSize]="contenido.nbHits" [pageSize]="20" [(page)]="pagina"
+                aria-label="Default pagination" (pageChange)="getEstudios()"></ngb-pagination> -->
+  </div>
+</section>

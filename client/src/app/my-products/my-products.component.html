@@ -1,0 +1,37 @@
+<section id="myestudios">
+  <div class="container p-5">
+    <app-message></app-message>
+    <div *ngIf="!estudios" class="m-auto">
+      <h1 class="text-center display-3 mt-5">
+        <i class="spinner-grow" role="status"></i>
+      </h1>
+    </div>
+    <h3 *ngIf="estudios && !estudios.length" class="display-2 text-center mt-5">No tiene estudios</h3>
+    <div *ngIf="estudios && estudios.length" class="row">
+      <div  class="product">
+        <table class="table table-borderless">
+          <thead>
+            <h4 class="display-4">Mis estudios </h4>
+            <tr>
+              <th>Nombre / Categoria</th>
+              <th></th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let estudio of estudios" >
+            <td> <a routerLink="/estudio/{{ estudio._id }}">{{ estudio.titulo }}</a> <strong>/</strong>
+              <small class="text-muted">{{ estudio.categoria.nombre }} </small>
+            </td>
+            <td>{{estudio.descripcion}}</td>
+            <td >
+              {{ estudio.precio | currency }}
+            </td>
+          </tbody>
+
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+</section>

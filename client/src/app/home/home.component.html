@@ -1,0 +1,60 @@
+<section id="home" class=" text-dark" style=" background-color:  #e3f2fd;">
+  <div class="container-fluid d-none d-md-block">
+     
+
+  <div class=" row  p-5">
+    <app-message></app-message>
+    <div class="">
+
+      <!-- <h4 class="display-4">{{ upper }} de {{ totalEstudios }} Estudios </h4> -->
+
+      
+      <ngb-carousel class="col-6" 
+      style="text-align: center;"
+      *ngIf="tienenAnuncios">
+        <ng-template *ngFor="let anuncio of anuncios" ngbSlide>
+          <div>
+            <h3>{{anuncio.titulo}}</h3>
+            <p>{{anuncio.descripcion}}</p>
+          </div>
+        </ng-template>
+      </ngb-carousel>
+
+      <h4 class="display-4 col-1"> <strong>Estudios</strong></h4>
+    </div>
+    </div>
+    <div class="row">
+      <div *ngIf="!estudios" class="m-auto">
+        <h1 class="text-center display-3 mt-5">
+          <i class="spinner-grow"></i>
+
+        </h1>
+      </div>
+      <div *ngFor="let estudio of estudios " class="col-md-3 mb-5">
+        <br>
+        <div class="shadow scale rounded-3" style="height: 250px; width: auto;background-color: white;"
+          routerLink="/estudio/{{ estudio.product_id }}">
+          <div class=" text-center " style="padding: 10px;">
+
+            <!-- <img src="{{ estudio.image }}" alt="estudio" class="card-img-top"> -->
+            <div>
+              <h5 class="card-title fs-4" style="white-space: normal; margin-top: 15%;">{{ estudio.product_name }}</h5>
+
+              <p class="card-text"> Categoria: {{estudio.name}}</p>
+              <p class="card-text">Precio: {{estudio.price1 | currency}}</p>
+
+
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+    <!-- <ngb-pagination [collectionSize]="totalEstudios" [pageSize]="12" [(page)]="pagina"
+                aria-label="Default pagination" (pageChange)="obtenerEstudios($event)"></ngb-pagination> -->
+  </div>
+
+</section>

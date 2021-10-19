@@ -1,0 +1,31 @@
+<section id="categorias">
+    <div class="container p-5">
+      <app-message></app-message>
+      <h4 class="display-4">Categorias</h4>
+      
+      <div *ngIf="!categorias" class="m-auto">
+        <h1 class="text-center display-3 mt-5">
+          <i class="spinner-grow" role="status"></i>
+        </h1>
+      </div>
+      <div *ngIf="categorias" class="list-group list-group-flush">
+        <a *ngFor="let category of categorias" routerLink="/categorias/{{ category._id }}" class="list-group-item list-group-item-action">
+        {{ category.nombre }}
+        </a>
+      </div>
+      
+      <div class="  mt-" *ngIf=" administrador">
+        <div class="card-body">
+          <h4 class="display-4">Agregar Nueva Categoria </h4>
+          
+          <div class="form">
+            <div class="form-group">
+              <label><h5>Categoria</h5></label>
+              <input type="text" name="newCategory" class="form-control" [(ngModel)]="newCategory">
+            </div>
+            <button type="button" class="btn btn-outline-info" (click)="agregarCategoria()" [disabled]="btnDisabled">Agregar Categoria</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,52 @@
+<section id="categoria">
+    <div class="container p-3 p-md-5">
+        <app-message></app-message>
+        <div *ngIf="!categoria" class="m-auto">
+            <h1 class="text-center display-3 mt-5">
+                <i class="spinner-grow"></i>
+            </h1>
+        </div>
+        <h3 *ngIf="categoria && !categoria.estudios.length" class="display-2 text-center mt-5">Esta categoria no tiene
+            estudios</h3>
+        <div *ngIf="categoria && categoria.estudios.length">
+            <h4 class="display-4">{{ lower }}-{{ upper }} de {{ categoria.totalEstudios }} estudios en {{
+                categoria.nombreCategoria }} </h4>
+
+            <div class="estudio">
+                <div class="product">
+                    <table class="table table-borderless">
+                        <thead>
+
+                            <tr>
+                                <th>Nombre / Categoria</th>
+                                <th></th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let estudio of categoria.estudios">
+                            <td> <a routerLink="/estudio/{{ estudio._id }}">{{ estudio.titulo }}</a> <strong>/</strong>
+                                <small class="text-muted">{{ estudio.categoria.nombre }} </small>
+                            </td>
+                            <td>{{estudio.descripcion}}</td>
+                            <td>
+                                {{ estudio.precio | currency }}
+                            </td>
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+            <ngb-pagination [collectionSize]="categoria.totalEstudios" [pageSize]="10" [(page)]="pagina"
+                aria-label="Default pagination" (pageChange)="getEstudios($event)"></ngb-pagination>
+        </div>
+    </div>
+</section>
+
+<!-- <ng-template #t let-fill="fill">
+    <span *ngIf="fill === 100" class="star full">&#9733;</span>
+    <span *ngIf="fill === 0" class="star">&#9733;</span>
+    <span *ngIf="fill < 100 && fill > 0" class="star">
+      <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+    </span>
+  </ng-template> -->

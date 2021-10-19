@@ -1,0 +1,73 @@
+<section id="home" class=" text-dark" style=" background-color:  #e3f2fd;">
+  <div class="container-fluid p-2">
+    <app-message></app-message>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-6 p-3 shadow rounded-3 " style="background-color: white; height: fit-content;">
+
+          <div class="form-group">
+            <h4 class="display-6"> <strong>Titulo</strong></h4>
+            <input type="text" [(ngModel)]="nuevoAnuncio.titulo" class="form-control" required>
+            <small class="form-text text-muted">Titulo del aviso</small>
+          </div>
+          <div class="form-group">
+            <h4 class="display-6"> <strong>Descripcion</strong></h4>
+            <textarea class="form-control" name="descripcion" required [(ngModel)]="nuevoAnuncio.descripcion"
+              maxlength="200" cols="30" rows="5"></textarea>
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" [(ngModel)]="nuevoAnuncio.habilitado" class="form-check-input" required>
+            <label class="form-check-label">Habilitar</label>
+          </div>
+          <button class="btn btn-light shadow" (click)='agregar(nuevoAnuncio)' type="submit"
+            style="margin-bottom: 10px;"> Agregar Anuncio
+            <i class="bi bi-file-plus"></i>
+          </button>
+
+        </div>
+
+        <div class="col-lg-6 ">
+          <table class="table table-borderless shadow rounded-3" style="background-color: white;">
+            <thead>
+              <tr>
+                <th>
+                  <h4 class="display-6"> <strong>Titulo</strong> </h4>
+                </th>
+                <th>
+                  <h4 class="display-6"> <strong> Descripcion</strong></h4>
+                </th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let anuncio of anuncios">
+              <tr>
+                <td>{{anuncio.titulo}}</td>
+                <td>{{anuncio.descripcion}}</td>
+                <td>
+                  <div class="form-check form-check-inline">
+                    <input type="checkbox" [(ngModel)]="anuncio.habilitado" (change)="habilitarAnuncio(anuncio)"
+                      class="form-check-input" style="height: 30px;width: 30px;"
+                      data-bs-toggle="tooltip" data-bs-placement="top" title="Habilitar">
+
+                    <button class="btn btn-outline-warning rounded-3 "
+                    data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"
+                    (click)="editar(anuncio)">
+                      <i class="bi bi-pencil-square"></i>
+                    </button>
+
+                    <button class="btn btn-outline-danger rounded-3 "
+                    data-bs-toggle="tooltip" data-bs-placement="top" title="Borrar"
+                    (click)="borrar(anuncio._id)">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
