@@ -8,6 +8,7 @@ import { EstudioComponent } from './estudio/estudio.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MantenimientoAvisosComponent } from './mantenimiento-avisos/mantenimiento-avisos.component';
+import { MantenimientopreguntasComponent } from './mantenimientopreguntas/mantenimientopreguntas.component';
 import { MyProductsComponent } from './my-products/my-products.component';
 import { PostProductComponent } from './post-product/post-product.component';
 import { PreCitaComponent } from './pre-cita/pre-cita.component';
@@ -77,6 +78,10 @@ const routes: Routes = [
   {
     path:'mantenimientoAvisos',
     component:MantenimientoAvisosComponent
+  },
+  {
+    path:'mantenimientoPreguntas',
+    component:MantenimientopreguntasComponent
   },
   {
     path:'**',

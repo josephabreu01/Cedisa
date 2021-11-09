@@ -33,33 +33,33 @@ router.get('/', (req, res, next) => {
     //   });
 
     // });
-   
-      connectionMySql.query({
-        sql: 'select * from products pr inner join branchs_has_products bhp using (product_id) where company_id <> 4 and bhp.branch_id= ' + 1 + '',
-        timeout: 40000,
-      }, (error, results, fields) => {
 
-        
+    connectionMySql.query({
+      sql: 'select * from products pr inner join branchs_has_products bhp using (product_id) where company_id <> 4 and bhp.branch_id= ' + 1 + '',
+      timeout: 40000,
+    }, (error, results, fields) => {
 
-        results.forEach(element => {
 
-          if (element.product_name.includes(query)) {
-            filtrados.push(element);
-          }
-        });
 
-        res.json({
-          success: true,
-          content: filtrados,
-          message: "funciono",
-          estudios: results,
-        })
+      results.forEach(element => {
+
+        if (element.product_name.includes(query)) {
+          filtrados.push(element);
+        }
+      });
+
+      res.json({
+        success: true,
+        content: filtrados,
+        message: "funciono",
+        estudios: results,
       })
-    } 
+    })
+  }
 
 
 
-  
+
 });
 
 

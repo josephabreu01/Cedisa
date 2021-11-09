@@ -1,17 +1,12 @@
 <section id="home" class=" text-dark" style=" background-color:  #e3f2fd;">
   <div class="container-fluid d-none d-md-block">
-     
 
-  <div class=" row  p-5">
-    <app-message></app-message>
-    <div class="">
 
-      <!-- <h4 class="display-4">{{ upper }} de {{ totalEstudios }} Estudios </h4> -->
+    <div class=" row  p-5">
+      <!-- <p><ngb-progressbar [value]="progreso"></ngb-progressbar></p> -->
+      <app-message></app-message>
 
-      
-      <ngb-carousel class="col-6" 
-      style="text-align: center;"
-      *ngIf="tienenAnuncios">
+      <ngb-carousel class="col-6" style="text-align: center;" *ngIf="tienenAnuncios">
         <ng-template *ngFor="let anuncio of anuncios" ngbSlide>
           <div>
             <h3>{{anuncio.titulo}}</h3>
@@ -20,10 +15,76 @@
         </ng-template>
       </ngb-carousel>
 
+      <h2>Recuerde responder todas las preguntas </h2>
+
+      <div class="col-12"  *ngIf="!verResultadoPreguntas">
+
+       
+        <div *ngFor="let pregunta of preguntas ; let i = index" class="form-group shadow p-3 rounded-3 " style="background-color: white;">
+          <h3>
+            {{pregunta.orden}}. ¿{{pregunta.pregunta}}?
+          </h3>
+
+          <div class="form-check-inline">
+            <div class="form-check p-1">
+              <label class="form-check-label">
+                Si
+              </label>
+              <input type="checkbox" [(ngModel)]="pregunta.si" [disabled]="pregunta.no" (ngModelChange)="repuestas(pregunta , i)" class="form-check-input p-1"
+                style="margin-left: 10px; height: 20px;width: 30px;" required>
+            </div>
+  
+            <div class="form-check p-1">
+              <label class="form-check-label">
+                No
+              </label>
+              <input type="checkbox" [(ngModel)]="pregunta.no" [disabled]="pregunta.si" (ngModelChange)="repuestas(pregunta , i)"class="form-check-input p-1"
+                style="margin-left: 10px; height: 20px;width: 30px;" required>
+            </div>
+          </div>
+          
+
+          <div class="form-floating">
+            <textarea class="form-control" style="border-radius: 5px;height: 75px" [(ngModel)]="pregunta.respuesta"
+            (blur)="repuestas(pregunta , i)"
+              placeholder="Leave a comment here"></textarea>
+            <label for="floatingTextarea">Anotaciones o respuestas</label>
+          </div>
+
+        </div>
+
+      </div>
+
+      <button class="btn btn-outline-info" *ngIf="!verResultadoPreguntas" (click)="resultadosPreguntas()">Terminar Cuestionaio</button>
+      <!-- <div class="">
+
+     
+
+      
+      
+
       <h4 class="display-4 col-1"> <strong>Estudios</strong></h4>
+    </div> -->
+    <div class="col-12"  *ngIf="verResultadoPreguntas">
+      <ol class="list-group list-group-numbered shadow">
+        <li class="list-group-item d-flex justify-content-between align-items-start" *ngFor="let pregunta of preguntas ; let i = index">
+          <div class="ms-2 me-auto">
+             <h4> ¿{{pregunta.pregunta}}?</h4> 
+            {{pregunta.respuesta}}
+          </div>
+          <span style="width: 70px; height: auto; font-size: 12pt;" *ngIf="pregunta.si" class="badge bg-success rounded-pill">Si</span>
+          <span style="width: 70px; height: auto; font-size: 12pt;" *ngIf="pregunta.no" class="badge bg-danger rounded-pill">No</span>
+
+        </li>
+      </ol>
+      </div>
+
+      <button class="btn btn-outline-info" style="margin-top: 20px;" *ngIf="verResultadoPreguntas" (click)="terminarCuestionario()">Terminar Cita</button>
+
     </div>
-    </div>
-    <div class="row">
+    
+
+    <!-- <div class="row">
       <div *ngIf="!estudios" class="m-auto">
         <h1 class="text-center display-3 mt-5">
           <i class="spinner-grow"></i>
@@ -36,7 +97,7 @@
           routerLink="/estudio/{{ estudio.product_id }}">
           <div class=" text-center " style="padding: 10px;">
 
-            <!-- <img src="{{ estudio.image }}" alt="estudio" class="card-img-top"> -->
+           
             <div>
               <h5 class="card-title fs-4" style="white-space: normal; margin-top: 15%;">{{ estudio.product_name }}</h5>
 
@@ -52,7 +113,7 @@
 
       </div>
 
-    </div>
+    </div> -->
     <!-- <ngb-pagination [collectionSize]="totalEstudios" [pageSize]="12" [(page)]="pagina"
                 aria-label="Default pagination" (pageChange)="obtenerEstudios($event)"></ngb-pagination> -->
   </div>

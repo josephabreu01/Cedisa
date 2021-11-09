@@ -20,7 +20,7 @@ router.route('/')
         console.log(id)
         if (id._id) {
             Anuncio.findOneAndUpdate(id, {
-                 habilitado: anuncio.habilitado,
+                habilitado: anuncio.habilitado,
                 titulo: anuncio.titulo,
                 descripcion: anuncio.descripcion }
                 , { upsert: true },

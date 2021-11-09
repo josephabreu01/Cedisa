@@ -32,10 +32,12 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
+import {DragDropModule ,CdkDragEnter, CdkDragExit} from '@angular/cdk/drag-drop';
 import {MatIconModule} from'@angular/material/icon';
 import { PreCitaComponent } from './pre-cita/pre-cita.component'
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MantenimientoAvisosComponent } from './mantenimiento-avisos/mantenimiento-avisos.component';
+import { MantenimientopreguntasComponent } from './mantenimientopreguntas/mantenimientopreguntas.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { MantenimientoAvisosComponent } from './mantenimiento-avisos/mantenimien
     SearchComponent,
     MyFilterPipe,
     PreCitaComponent,
-    MantenimientoAvisosComponent
+    MantenimientoAvisosComponent,
+    MantenimientopreguntasComponent,
+    
     
   ],
   imports: [
@@ -70,7 +74,10 @@ import { MantenimientoAvisosComponent } from './mantenimiento-avisos/mantenimien
     MatAutocompleteModule,
     MatIconModule,
     ToastrModule.forRoot(),
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    DragDropModule,
+    
+    
 
   ],
   providers: [ ResApiService,DataService,AuthGuardService,],

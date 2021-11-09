@@ -47,12 +47,14 @@ const mainRoutes = require('./routes/main');
 const administradorRoutes = require('./routes/administrador');
 const estudiosSearchRoutes = require('./routes/estudios-search');
 const anuncioRoutes = require('./routes/anuncio');
+const preguntasRoutes = require('./routes/preguntas');
 
 app.use('/api', mainRoutes);
 app.use('/api/accounts', userRoutes);
 app.use('/api/administrador', administradorRoutes);
 app.use('/api/search', estudiosSearchRoutes)
 app.use('/api/anuncio',anuncioRoutes);
+app.use('/api/preguntas',preguntasRoutes);
 
 app.listen(config.port, (err) => {
     console.log("aplicacion corriendo en el puerto " + config.port);

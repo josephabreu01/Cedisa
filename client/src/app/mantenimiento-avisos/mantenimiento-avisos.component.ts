@@ -23,7 +23,7 @@ export class MantenimientoAvisosComponent implements OnInit {
     private data: DataService,
     private rest: ResApiService,
     private anuncioService: AnuncioService,
-    private notificacion: NotificationService
+    private notificacion: NotificationService,
   ) { }
 
   ngOnInit() {
@@ -86,7 +86,11 @@ export class MantenimientoAvisosComponent implements OnInit {
   editar(anuncio: Anuncio) {
     
     this.nuevoAnuncio = Object.assign({}, anuncio);
+
+    
   }
+
+  
 
   async borrar(id: any) {
     if (confirm('Desea eliminar este aununcio ?')) {
