@@ -20,14 +20,14 @@ export class ResApiService {
   }
 
   get(link:string){
-    return this.http.get(this.ambiente.desarrollo + link, { headers: this.getHeaders()}).toPromise();
+    return this.http.get(this.ambiente.produccion + link, { headers: this.getHeaders()}).toPromise();
   }
 
   post(link : string , body: any){
-    return this.http.post(this.ambiente.desarrollo + link, body, {headers: this.getHeaders()}).toPromise();
+    return this.http.post(this.ambiente.produccion + link, body, {headers: this.getHeaders()}).toPromise();
   }
 
   delete(link : string ){
-    return this.http.delete(this.ambiente.desarrollo + link, {headers: this.getHeaders()}).toPromise();
+    return this.http.delete(this.ambiente.produccion + link, {headers: this.getHeaders()}).toPromise();
   }
 }

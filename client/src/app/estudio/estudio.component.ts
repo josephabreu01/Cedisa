@@ -82,4 +82,8 @@ export class EstudioComponent implements OnInit {
     }
   }
 
+  volverInicio(){
+    this.router.navigate(['']);
+  }
+
 }
