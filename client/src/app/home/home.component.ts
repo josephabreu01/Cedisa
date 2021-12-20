@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   NgbCarouselConfig,
   NgbNavChangeEvent,
@@ -28,8 +28,38 @@ export class HomeComponent implements OnInit {
   progreso: number = 1;
   active: number = 1;
   tabs: number = 3;
-  preguntas: Array<any> = [];
-  verResultadoPreguntas: Boolean = false;
+  
+  rutas: Array<any> = [
+    {
+      nombre: 'Pantalla de Estudios',
+      ruta: 'estudiosVista',
+      texto: 'Estudios',
+      icono: 'bi bi-file-text-fill',
+      color:'#6fd1c6'
+    },
+    {
+      nombre: 'Pantalla de Preguntas',
+      ruta: 'preguntas',
+      texto: 'Preguntas a Seguir en una llamada',
+      icono: 'bi bi-question-square-fill',
+      color: '#d1d16f'
+    },
+    {
+      nombre: 'Extensiones',
+      ruta: 'extensiones',
+      texto: 'Extensiones de Cedisa',
+      icono:'bi bi-telephone-forward-fill',
+      color:'#6fadd1'
+    },
+    {
+      nombre: 'Informacion Sucursales',
+      ruta: 'sucursales',
+      texto: 'Infromacion general de las Sucursales',
+      icono:'bi bi-bank2',
+      color:'#d16f6f'
+    },
+  ];
+
   soloInformacion: any = false;
 
   constructor(
@@ -42,19 +72,11 @@ export class HomeComponent implements OnInit {
     private homeService: HomeServiceService
   ) {
     this.carousel.showNavigationIndicators = false;
-
-    progresBar.max = 10;
-    progresBar.striped = true;
-    progresBar.animated = true;
-    progresBar.type = 'info';
-    progresBar.height = '20px';
-    progresBar.showValue = true;
   }
 
   async ngOnInit() {
-    await this.obtenerEstudios();
     await this.obtenerAnuncios();
-    this.obtenerPreguntas();
+
     this.soloInformacion = this.homeService.vistaHome();
   }
 
@@ -70,23 +92,7 @@ export class HomeComponent implements OnInit {
     return Math.min(12 * this.pagina, this.totalEstudios);
   }
 
-  async obtenerEstudios(event?: any) {
-    if (event) {
-      this.estudios = null;
-    }
-
-    try {
-      const data: any = await this.rest.get(`api/estudios/${this.pagina - 1}`);
-      data['success']
-        ? ((this.estudios = data['estudios']),
-          (this.totalEstudios = data['totalEstudios']))
-        : this.data.error('No se pudieron encontrar los Estudios');
-
-      window.scroll(0, 0);
-    } catch (error) {
-      // this.data.error(error['message'])
-    }
-  }
+  
 
   collapse() {}
 
@@ -110,22 +116,6 @@ export class HomeComponent implements OnInit {
     !this.isCollapsed;
   }
 
-  async obtenerPreguntas() {
-    if (this.preguntasService.obteneterPreguntas().length) {
-      this.preguntas = this.preguntasService.obteneterPreguntas();
-    } else {
-      try {
-        let data: any = await this.rest.get('api/preguntas');
-
-        data['success']
-          ? (this.preguntas = data['preguntas'])
-          : this.notificacion.showError('Preguntas no encontradas', 'ERROR');
-      } catch (error) {
-        this.notificacion.showError(error, 'ERROR');
-      }
-    }
-  }
-
   cambiarTab() {
     if (this.active === this.tabs) {
       return (this.active = this.tabs);
@@ -134,31 +124,10 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  repuestas(pregunta: any, index: any) {
-    this.preguntas[index] = pregunta;
-
-    this.preguntasService.guardarPreguntas(this.preguntas);
-
-    console.log(this.preguntasService.obteneterPreguntas());
-  }
-
-  resultadosPreguntas() {
-    confirm('Desea terminar el cuestionario?')
-      ? ((this.verResultadoPreguntas = true), this.scroll(0))
-      : (this.verResultadoPreguntas = false);
-  }
-
-  terminarCuestionario() {
-    if (confirm('Desea terminar?')) {
-      this.preguntas = this.preguntasService.limpiarPreguntas();
-      this.verResultadoPreguntas = false;
-      this.obtenerPreguntas();
-      this.scroll(0);
-    }
-  }
-
   cambioHome() {
     this.soloInformacion = !this.soloInformacion;
     this.homeService.guardarVista(this.soloInformacion);
   }
+
+  extensiones() {}
 }

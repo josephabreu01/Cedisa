@@ -1,0 +1,40 @@
+<section class="text-dark" style="background-color: #e3f2fd">
+  <div class="container-fluid p-2">
+    <div class="container-fluid">
+      <div class="row">
+        <h4 class="display-4"><strong>Informacion de Sucursales</strong></h4>
+        <input
+          type="text"
+          [(ngModel)]="busqueda"
+          placeholder="Buscar Sucursal"
+          class="form-control shadow mb-2 p-4"
+        />
+        <table
+          class="table shadow p-3 rounded-3 table table-borderless"
+          style="background-color: white"
+        >
+          <thead>
+            <tr>
+              <th class="display-6"><strong> Sucursal </strong></th>
+              <th class="display-6"><strong> Informacion </strong></th>
+            </tr>
+          </thead>
+
+          <tbody *ngFor="let sucursal of sucursales | filter: busqueda">
+            <tr>
+              <td class="col-3">{{ sucursal.nombre }}</td>
+              <td class="col-6">
+                <textarea
+                  class="form-control"
+                  style="border-radius: 5px; height: 75"
+                  disabled
+                  >{{ sucursal.descripcion }}</textarea
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,13 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
-@import "~@ng-select/ng-select/themes/default.theme.css";
-@import '~ngx-toastr/toastr';
+@import "~bootstrap/scss/bootstrap";
+@import "~ngx-toastr/toastr";
 $main: #232f3e;
 
 .bg-main {
-  background-color:$main;
+  background-color: $main;
 }
 
 a {
@@ -17,9 +16,8 @@ a {
 
 a:hover {
   text-decoration: none;
-  color:blue ;
+  color: blue;
   transition: color 1.5s;
-
 }
 
 button {
@@ -27,7 +25,8 @@ button {
 }
 
 section {
-  min-height: 600px;
+  min-height: 770px;
+  min-width: 100%;
 }
 
 h5 {
@@ -61,15 +60,15 @@ h5 {
   color: gold;
 }
 
-.scale:hover{
-  transition: .3s;
-  transform: scale(1.2);
+.scale:hover {
+  transition: 0.3s;
+  transform: scale(1.05);
   opacity: 1;
   cursor: pointer;
 }
-.scale:default{
-  transition: .3s;
-  transform: scale(0);
+.scale:left {
+  transition: 0.3s;
+  transform:none;
   cursor: pointer;
 }
 
@@ -77,6 +76,15 @@ mat-form-field {
   width: 90%;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: fit-content;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

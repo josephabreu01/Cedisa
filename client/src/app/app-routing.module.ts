@@ -5,13 +5,19 @@ import { AuthGuardService } from './auth-guard.service';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { EstudioComponent } from './estudio/estudio.component';
+import { EstudiosVistaComponent } from './estudios-vista/estudios-vista.component';
+import { ExtensionesMantenimientoComponent } from './extensiones-mantenimiento/extensiones-mantenimiento.component';
+import { ExtensionesComponent } from './extensiones/extensiones.component';
 import { HomeComponent } from './home/home.component';
+import { InformacionSucursalesMantenimientoComponent } from './informacion-sucursales-mantenimiento/informacion-sucursales-mantenimiento.component';
+import { InformacionSucursalesComponent } from './informacion-sucursales/informacion-sucursales.component';
 import { LoginComponent } from './login/login.component';
 import { MantenimientoAvisosComponent } from './mantenimiento-avisos/mantenimiento-avisos.component';
 import { MantenimientopreguntasComponent } from './mantenimientopreguntas/mantenimientopreguntas.component';
 import { MyProductsComponent } from './my-products/my-products.component';
 import { PostProductComponent } from './post-product/post-product.component';
 import { PreCitaComponent } from './pre-cita/pre-cita.component';
+import { PreguntasComponent } from './preguntas/preguntas.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { SearchComponent } from './search/search.component';
@@ -76,12 +82,36 @@ const routes: Routes = [
     component:PreCitaComponent
   },
   {
+    path:'extensiones',
+    component:ExtensionesComponent
+  },
+  {
+    path:'sucursales',
+    component:InformacionSucursalesComponent
+  },
+  {
+    path:'preguntas',
+    component:PreguntasComponent
+  },
+  {
+    path:'estudiosVista',
+    component:EstudiosVistaComponent
+  },
+  {
     path:'mantenimientoAvisos',
     component:MantenimientoAvisosComponent
   },
   {
     path:'mantenimientoPreguntas',
     component:MantenimientopreguntasComponent
+  },
+  {
+    path:'mantenimientoExtensiones',
+    component:ExtensionesMantenimientoComponent
+  },
+  {
+    path:'mantenimientoSucursales',
+    component:InformacionSucursalesMantenimientoComponent,
   },
   {
     path:'**',

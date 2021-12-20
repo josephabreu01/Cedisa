@@ -38,6 +38,17 @@ import { PreCitaComponent } from './pre-cita/pre-cita.component'
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MantenimientoAvisosComponent } from './mantenimiento-avisos/mantenimiento-avisos.component';
 import { MantenimientopreguntasComponent } from './mantenimientopreguntas/mantenimientopreguntas.component';
+import { ExtensionesComponent } from './extensiones/extensiones.component';
+import { InformacionSucursalesComponent } from './informacion-sucursales/informacion-sucursales.component';
+import { ExtensionesMantenimientoComponent } from './extensiones-mantenimiento/extensiones-mantenimiento.component';
+import { InformacionSucursalesMantenimientoComponent } from './informacion-sucursales-mantenimiento/informacion-sucursales-mantenimiento.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {CdkAccordionModule} from '@angular/cdk/accordion';
+import { PreguntasComponent } from './preguntas/preguntas.component';
+import { NbThemeModule, NbLayoutModule, NbCardModule } from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { EstudiosVistaComponent } from './estudios-vista/estudios-vista.component';
+
 
 @NgModule({
   declarations: [
@@ -58,6 +69,12 @@ import { MantenimientopreguntasComponent } from './mantenimientopreguntas/manten
     PreCitaComponent,
     MantenimientoAvisosComponent,
     MantenimientopreguntasComponent,
+    ExtensionesComponent,
+    InformacionSucursalesComponent,
+    ExtensionesMantenimientoComponent,
+    InformacionSucursalesMantenimientoComponent,
+    PreguntasComponent,
+    EstudiosVistaComponent,
     
     
   ],
@@ -76,6 +93,11 @@ import { MantenimientopreguntasComponent } from './mantenimientopreguntas/manten
     ToastrModule.forRoot(),
     Ng2SearchPipeModule,
     DragDropModule,
+    MatTabsModule,
+    CdkAccordionModule,
+    NbThemeModule.forRoot({ name: 'default' }),
+    NbLayoutModule,
+    NbCardModule,
     
     
 

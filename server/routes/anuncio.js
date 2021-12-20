@@ -35,7 +35,6 @@ router.route('/')
                     }
                 })
         } else {
-            console.log("entro")
             try {
 
                 anuncio.save();
@@ -51,7 +50,7 @@ router.route('/')
     })
 
     router.delete('/:id',(req, res, next) =>{
-        console.log(req.params)
+        
         Anuncio.deleteOne({_id: req.params.id},(err, result)=>{
             if(err){
                 res.json({

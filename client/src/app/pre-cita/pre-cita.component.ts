@@ -9,7 +9,7 @@ import { NotificationService } from '../notification.service';
   styleUrls: ['./pre-cita.component.scss']
 })
 export class PreCitaComponent implements OnInit {
-  filterTerm :string = '';
+  filterTerm :any = '';
   estudios : any;
   constructor(
     private carrito : CarritoService,

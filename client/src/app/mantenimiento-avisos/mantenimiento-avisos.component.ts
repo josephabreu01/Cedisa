@@ -45,14 +45,14 @@ export class MantenimientoAvisosComponent implements OnInit {
           : this.data.error(data['message'])
 
         this.nuevoAnuncio = {}
-        this.obtenerAnuncios();
+        
       } else {
         this.data.error('Tiene campos vacios')
       }
     } catch (error) {
       this.data.error('Tiene campos vacios')
     }
-
+    this.obtenerAnuncios();
   }
 
   async obtenerAnuncios() {
