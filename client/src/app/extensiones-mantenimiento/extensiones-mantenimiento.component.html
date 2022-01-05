@@ -1,69 +1,111 @@
-<section section id="" class="text-dark " style="background-color: #e3f2fd">
-    <div class="container-fluid p-2">
-      <div class="container-fluid">
-        <div class="row">
-          <div
-            class="col-lg-12 p-3 shadow rounded-3"
-            style="background-color: white; height: fit-content"
-          >
+<section section id="" class="text-dark">
+  <div class="container-fluid p-2">
+    <div class="container-fluid">
+      <div class="row">
+        <div
+          class="col-lg-12 p-3 shadow rounded-3"
+          style="background-color: white; height: fit-content"
+        >
           <div class="row">
-            <div class="col" style="width: 75%;">
+            <div class="col" style="width: 75%">
               <h4 class="display-6"><strong>Titulo</strong></h4>
-              <input type="text" class="form-control" [(ngModel)]="nuevaExtension.personal" placeholder="Titulo" >
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="nuevaExtension.personal"
+                placeholder="Titulo"
+              />
             </div>
             <div class="col">
               <h4 class="display-6"><strong>Extension</strong></h4>
-              <input type="text" class="form-control"  [(ngModel)]="nuevaExtension.extension" placeholder="Extension" (keyup.enter)="guardarExtension(nuevaExtension)">
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="nuevaExtension.extension"
+                placeholder="Extension"
+                (keyup.enter)="guardarExtension(nuevaExtension)"
+              />
             </div>
           </div>
-            <button
-              class="btn btn-light shadow col-2"
-              (click)="guardarExtension(nuevaExtension)"
-              type="submit"
-              style="margin-top: 10px"
-            >
-              Agregar Extension
-              <i class="bi bi-file-plus"></i>
-            </button>
-          </div>
-    
-          <div 
-          class="col-lg-12 p-3 shadow rounded-3"
-          style="background-color: white;margin-top: 2%;"
+          <button
+            class="btn btn-light shadow col-2"
+            (click)="guardarExtension(nuevaExtension)"
+            type="submit"
+            style="margin-top: 10px"
           >
-          <input type="text" [(ngModel)]="buscar" placeholder="Buscar Extension" class="form-control  mb-2">
-            <table class="table table-borderless " >
-              <thead>
-                <tr>
-                  <th class="display-6"> <strong>Titulo</strong></th>
+            Agregar Extension
+            <i class="bi bi-file-plus"></i>
+          </button>
+        </div>
 
-                  <th class="display-6"> <strong>Extension</strong></th>
-                </tr>
-              </thead>
-              <tbody *ngFor="let entension of extensiones | filter:buscar">
-                <tr>
-                  <td style="width: 50%;">{{entension.personal}}</td>
-                  <td >{{entension.extension}}</td>
-                  <div class="form-check form-check-inline">
-                   
-                    <button class="btn btn-outline-warning rounded-3 "
-                    data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"
-                    (click)="editar(entension)">
-                      <i class="bi bi-pencil-square"></i>
-                    </button>
+        <div
+          class="col-lg-12 p-3 shadow rounded-3"
+          style="background-color: white; margin-top: 2%"
+        >
+          <input
+            type="text"
+            [(ngModel)]="buscar"
+            placeholder="Buscar Extension"
+            class="form-control mb-2"
+          />
+          <table class="table table-borderless">
+            <thead>
+              <tr>
+                <th class="display-6"><strong>Titulo</strong></th>
 
-                    <button class="btn btn-outline-danger rounded-3 "
-                    data-bs-toggle="tooltip" data-bs-placement="top" title="Borrar"
-                    (click)="borrar(entension._id)">
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </div>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+                <th class="display-6"><strong>Extension</strong></th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let entension of extensiones | filter: buscar">
+              <tr>
+                <td style="width: 50%">{{ entension.personal }}</td>
+                <td>{{ entension.extension }}</td>
+                <div class="form-check form-check-inline">
+                  <button
+                    class="btn btn-outline-warning rounded-3"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Editar"
+                    (click)="editar(entension)"
+                  >
+                    <i class="bi bi-pencil-square"></i>
+                  </button>
+
+                  <button
+                    class="btn btn-outline-danger rounded-3"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Borrar"
+                    (click)="borrar(entension._id)"
+                  >
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </div>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
-  </section>
-  
+  </div>
+  <div class="col-lg-12 p-2">
+    <input
+      type="file"
+      class="btn btn-light shadow col-lg-8 me-2"
+      (change)="cargarExcel($event)"
+      placeholder="Selecione excel"
+    />
+    <button
+      (click)="guardarExcel()"
+      *ngIf="excelCargado"
+      class="btn btn-light shadow col-lg-3"
+    > Guardar Excel</button>
+    <a
+    *ngIf="!excelCargado"
+      href="assets/Plantilla para carga de Extensiones.xlsx"
+      download="Plantilla Extensiones.xlsx"
+      class="btn btn-light shadow col-lg-3"
+      >Descargar Plantilla</a
+    >
+  </div>
+</section>

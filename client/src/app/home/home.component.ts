@@ -6,6 +6,7 @@ import {
   NgbNavChangeEvent,
   NgbProgressbarConfig,
 } from '@ng-bootstrap/ng-bootstrap';
+import { ExcelService } from '../archivos/excel.service';
 import { DataService } from '../data.service';
 import { NotificationService } from '../notification.service';
 import { ResApiService } from '../res-api.service';
@@ -28,35 +29,37 @@ export class HomeComponent implements OnInit {
   progreso: number = 1;
   active: number = 1;
   tabs: number = 3;
+
   
+
   rutas: Array<any> = [
     {
       nombre: 'Pantalla de Estudios',
       ruta: 'estudiosVista',
       texto: 'Estudios',
       icono: 'bi bi-file-text-fill',
-      color:'#6fd1c6'
+      color: '#6fd1c6',
     },
     {
       nombre: 'Pantalla de Preguntas',
       ruta: 'preguntas',
       texto: 'Preguntas a Seguir en una llamada',
       icono: 'bi bi-question-square-fill',
-      color: '#d1d16f'
+      color: '#d1d16f',
     },
     {
       nombre: 'Extensiones',
       ruta: 'extensiones',
       texto: 'Extensiones de Cedisa',
-      icono:'bi bi-telephone-forward-fill',
-      color:'#6fadd1'
+      icono: 'bi bi-telephone-forward-fill',
+      color: '#6fadd1',
     },
     {
       nombre: 'Informacion Sucursales',
       ruta: 'sucursales',
       texto: 'Infromacion general de las Sucursales',
-      icono:'bi bi-bank2',
-      color:'#d16f6f'
+      icono: 'bi bi-bank2',
+      color: '#d16f6f',
     },
   ];
 
@@ -69,7 +72,8 @@ export class HomeComponent implements OnInit {
     public progresBar: NgbProgressbarConfig,
     private notificacion: NotificationService,
     private preguntasService: PreguntasService,
-    private homeService: HomeServiceService
+    private homeService: HomeServiceService,
+    private excelService: ExcelService
   ) {
     this.carousel.showNavigationIndicators = false;
   }
@@ -91,8 +95,6 @@ export class HomeComponent implements OnInit {
   get upper() {
     return Math.min(12 * this.pagina, this.totalEstudios);
   }
-
-  
 
   collapse() {}
 
@@ -128,6 +130,13 @@ export class HomeComponent implements OnInit {
     this.soloInformacion = !this.soloInformacion;
     this.homeService.guardarVista(this.soloInformacion);
   }
-
+ result:any=[];
   extensiones() {}
+  
+  
+
+
+
+
+  
 }

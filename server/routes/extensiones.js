@@ -17,8 +17,8 @@ router
     let extension = new Extensiones();
     extension.extension = req.body.extension;
     extension.personal = req.body.personal;
-    extension._id = req.body._id 
-    console.log(req.body._id)
+    extension._id = req.body._id;
+    console.log(req.body._id);
     if (extension._id) {
       Extensiones.findOneAndUpdate(
         { _id: extension._id },
@@ -48,23 +48,33 @@ router
     }
   });
 
-  router.delete('/:id',(req, res, next) =>{
-    console.log(req.params)
-    Extensiones.deleteOne({_id:req.params.id}, (err,result) =>{
-      if (err) {
-        res.json({
-          success: false,
-          message: 'No Borrado'
-        })
-      }else{
-        res.json({
-          success: true,
-          message: 'Borrado'
-        })
-      }
+router.delete("/:id", (req, res, next) => {
+  console.log(req.params);
+  Extensiones.deleteOne({ _id: req.params.id }, (err, result) => {
+    if (err) {
+      res.json({
+        success: false,
+        message: "No Borrado",
+      });
+    } else {
+      res.json({
+        success: true,
+        message: "Borrado",
+      });
+    }
+  });
+});
 
-     
-    })
-  })
+router.route("/excel").post((req, res, next) => {
+  Extensiones.insertMany(req.body, (err, result) => {
+    if (err) throw err;
+    console.log(req.body);
+    res.json({
+      success: true,
+      message: "Se insertaron las extension",
+      resultado: result,
+    });
+  });
+});
 
 module.exports = router;

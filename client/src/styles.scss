@@ -27,6 +27,7 @@ button {
 section {
   min-height: 770px;
   min-width: 100%;
+  background-color: #e3f2fd;
 }
 
 h5 {
@@ -68,7 +69,7 @@ h5 {
 }
 .scale:left {
   transition: 0.3s;
-  transform:none;
+  transform: none;
   cursor: pointer;
 }
 
