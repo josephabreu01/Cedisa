@@ -1,9 +1,8 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule} from '@angular/common/http'
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +23,7 @@ import { CategoriaComponent } from './categoria/categoria.component';
 import { EstudioComponent } from './estudio/estudio.component';
 import { SearchComponent } from './search/search.component';
 
-import {MyFilterPipe} from './pipe';
+import { MyFilterPipe } from './pipe';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -32,9 +31,13 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
-import {DragDropModule ,CdkDragEnter, CdkDragExit} from '@angular/cdk/drag-drop';
-import {MatIconModule} from'@angular/material/icon';
-import { PreCitaComponent } from './pre-cita/pre-cita.component'
+import {
+  DragDropModule,
+  CdkDragEnter,
+  CdkDragExit,
+} from '@angular/cdk/drag-drop';
+import { MatIconModule } from '@angular/material/icon';
+import { PreCitaComponent } from './pre-cita/pre-cita.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MantenimientoAvisosComponent } from './mantenimiento-avisos/mantenimiento-avisos.component';
 import { MantenimientopreguntasComponent } from './mantenimientopreguntas/mantenimientopreguntas.component';
@@ -42,13 +45,12 @@ import { ExtensionesComponent } from './extensiones/extensiones.component';
 import { InformacionSucursalesComponent } from './informacion-sucursales/informacion-sucursales.component';
 import { ExtensionesMantenimientoComponent } from './extensiones-mantenimiento/extensiones-mantenimiento.component';
 import { InformacionSucursalesMantenimientoComponent } from './informacion-sucursales-mantenimiento/informacion-sucursales-mantenimiento.component';
-import {MatTabsModule} from '@angular/material/tabs';
-import {CdkAccordionModule} from '@angular/cdk/accordion';
+import { MatTabsModule } from '@angular/material/tabs';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { PreguntasComponent } from './preguntas/preguntas.component';
-import { NbThemeModule, NbLayoutModule, NbCardModule } from '@nebular/theme';
-import { NbEvaIconsModule } from '@nebular/eva-icons';
+// import { NbThemeModule, NbLayoutModule, NbCardModule } from '@nebular/theme';
+// import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { EstudiosVistaComponent } from './estudios-vista/estudios-vista.component';
-
 
 @NgModule({
   declarations: [
@@ -75,8 +77,6 @@ import { EstudiosVistaComponent } from './estudios-vista/estudios-vista.componen
     InformacionSucursalesMantenimientoComponent,
     PreguntasComponent,
     EstudiosVistaComponent,
-    
-    
   ],
   imports: [
     BrowserModule,
@@ -95,15 +95,12 @@ import { EstudiosVistaComponent } from './estudios-vista/estudios-vista.componen
     DragDropModule,
     MatTabsModule,
     CdkAccordionModule,
-    NbThemeModule.forRoot({ name: 'default' }),
-    NbLayoutModule,
-    NbCardModule,
-    
-    
-
+    // NbThemeModule.forRoot({ name: 'default' }),
+    // NbLayoutModule,
+    // NbCardModule,
   ],
-  providers: [ ResApiService,DataService,AuthGuardService,],
+  providers: [ResApiService, DataService, AuthGuardService],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}

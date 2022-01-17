@@ -53,9 +53,9 @@ router
     }
   });
 
-router.delete('/:id', (req, res, next) => {
-  console.log(req.params)
-  Sucursal.deleteOne({ _id:req.params.id }, (err, ressult) => {
+router.delete("/:id", (req, res, next) => {
+  console.log(req.params);
+  Sucursal.deleteOne({ _id: req.params.id }, (err, ressult) => {
     if (err) {
       res.json({ success: true, message: "Error al Borrar" });
     }
@@ -64,6 +64,17 @@ router.delete('/:id', (req, res, next) => {
       success: true,
       message: "Se elimino corectamente",
       elemento: ressult,
+    });
+  });
+});
+
+router.route("/excel").post((req, res, next) => {
+  Sucursal.insertMany(req.body, (err, result) => {
+    if (err) throw err;
+    res.json({
+      success: true,
+      message: "Sucurrsales Cargadas",
+      result: result,
     });
   });
 });
