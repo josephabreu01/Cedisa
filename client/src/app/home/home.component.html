@@ -1,9 +1,9 @@
 <section
   id="home"
-  class="text-dark"
+  class="text-dark "
   style=" height: 100%"
 >
-  <div class="container-xxl">
+  <div class="container-xxl animate__animated animate__fadeIn animate__delay-0.5s">
     <div class="row p-4">
       <!-- <p><ngb-progressbar [value]="progreso"></ngb-progressbar></p> -->
       <app-message></app-message>
@@ -27,7 +27,7 @@
 
       <div *ngFor="let ruta of rutas" class="col-6 mb-6 p-5">
         <div
-          class="shadow scale rounded-3"
+          class="shadow scale rounded-3 animate__animated animate__fadeIn animate__delay-0.5s" 
           [style.background-color]="ruta.color"
           style="height: 150%; width: 100%"
           [routerLink]="ruta.ruta"
@@ -35,7 +35,7 @@
           <div class="text-center" style="padding: 10px">
             <div>
               <h5
-                class="card-title fs-2"
+                class="card-title fs-2 animate__animated animate__bounceIn animate__delay-1s"
                 style="
                   white-space: normal;
                   margin-top: 15%;
@@ -47,7 +47,7 @@
                 ></strong>
               </h5>
 
-              <p class="card-text">{{ ruta.texto }}</p>
+              <p class="card-text animate__animated animate__bounceIn animate__delay-1s">{{ ruta.texto }}</p>
             </div>
           </div>
         </div>

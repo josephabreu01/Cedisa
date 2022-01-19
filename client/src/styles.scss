@@ -3,6 +3,8 @@
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
 @import "~ngx-toastr/toastr";
+@import "~animate.css/animate.min.css";
+
 $main: #232f3e;
 
 .bg-main {
@@ -28,6 +30,7 @@ section {
   min-height: 770px;
   min-width: 100%;
   background-color: #e3f2fd;
+  
 }
 
 h5 {
