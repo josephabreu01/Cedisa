@@ -19,6 +19,7 @@ router.get('/', (req, res, next) => {
   if (req.query.query) {
     var filtrados = [];
     var query = req.query.query.toUpperCase();
+    
     // index.search({
     //   query: req.query.query,
     //   page: req.query.page,
