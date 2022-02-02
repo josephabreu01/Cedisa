@@ -14,7 +14,7 @@ export class SearchComponent implements OnInit {
 
   contenido : any;
   estudios : any;
-  existe = false;
+  existe = true;
 
   query = '';
   constructor(
@@ -28,7 +28,7 @@ export class SearchComponent implements OnInit {
       this.query = res['query']
       this.pagina = 1;
       this.getEstudios();
-      
+
     })
   }
 

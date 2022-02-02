@@ -21,27 +21,27 @@ export class AppComponent  implements OnInit {
   cita: Array<object> = [];
   cantidad:any
 
- 
-  
+
+
   constructor(
-    private router: Router , 
+    private router: Router ,
     public data: DataService,
     private rest: ResApiService,
     private activeRoute:ActivatedRoute,
-    private carritoService:CarritoService 
+    private carritoService:CarritoService
     ){
     this.data.getProfile();
     this.cantidad = this.carritoService.obtenerEstudios().length
   }
 
   async ngOnInit(){
-    
+
     this.activeRoute.params.subscribe(res =>{
       this.cita.push(res['estudio'])
       this.cantidad = this.carritoService.obtenerEstudios().length
-      
+
     })
-  
+
     try {
       const data : any = this.rest.get(
         `api/estudios/${this.pagina - 1}`
@@ -49,7 +49,7 @@ export class AppComponent  implements OnInit {
         data['success']
         ?(this.estudios = data['estudios'])
         :this.data.error(data['error'])
-        
+
     } catch (error) {
       this.data.error('No se pudieron cargar los estudios')
     }
@@ -73,17 +73,25 @@ export class AppComponent  implements OnInit {
   logout() {
   this.data.user = {};
   localStorage.clear();
-  this.router.navigate(['']); 
+  this.router.navigate(['']);
   }
 
-  search() {
-    if (this.searchTerm) {
+  search(event:any) {
+    let search ;
+
+    setTimeout(() => {
+      search = event;
+
+
+    if (search) {
       this.collapse();
       this.router.navigate(['search', { query: this.searchTerm }]);
+      console.log('ejecuto')
     }else{
       this.collapse();
       this.router.navigate(['']);
     }
+  }, 500);
   }
 }
 

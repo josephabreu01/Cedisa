@@ -4,20 +4,20 @@
         <a routerLink="/"  (click)="home()" class="navbar-brand animate__animated animate__pulse animate__infinite" style="margin-top: 20px;">
           <img src="./assets/image/cedisalogo.png" alt="logo" id="logo"> Cedisa
         </a>
-        
+
         <button class="navbar-toggler" (click)="isCollapsed = !isCollapsed">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div [ngbCollapse]="isCollapsed" style="align-items: center; margin-left: 10px;" class="collapse navbar-collapse flex-column"
           id="navbarNav">
           <div class="  input-group input-group-lg w-70 " style="margin-top: 20px;">
-            <input type="text" name="search" placeholder="Buscar Informacion" class=" form-control border border-3 rounded-3" [(ngModel)]="searchTerm"  (keyup.enter)="search()"  (ngModelChange)="search()">
-            
-            <button id="searchBtn" class="btn btn-outline-primary rounded-3 " style="margin-left: 10px;" (click)="search()">
+            <input type="text" name="search" placeholder="Buscar Informacion" class=" form-control border border-3 rounded-3" [(ngModel)]="searchTerm"  (keyup.enter)="search($event)"  (ngModelChange)="search($event)">
+
+            <button id="searchBtn" class="btn btn-outline-primary rounded-3 " style="margin-left: 10px;" (click)="search($event)">
               <i  class="bi bi-search"></i>
             </button>
-    
-            
+
+
           </div>
           <!-- <div class="float-right">
             <ul class="navbar-nav">
@@ -55,12 +55,11 @@
         </div>
       </div>
     </nav>
-    
+
     <router-outlet ></router-outlet>
-    
+
     <footer class="p-2">
         <p class="lead text-center">Copyright &copy; 2021 Cedisa </p>
-      
+
     </footer>
-    
- 
+
